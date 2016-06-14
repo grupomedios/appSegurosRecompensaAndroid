@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/material_grey_200"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:padding="5dp">
+
+    <LinearLayout
+        android:background="@android:color/white"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            style="@style/BeepLabel"
+            android:id="@+id/login_name_label"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/name" />
+
+        <com.andreabaccega.widget.FormEditText
+            android:hint="@string/name"
+            android:id="@+id/login_name_edit"
+            android:inputType="textAutoComplete"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:singleLine="true"
+            app:emptyErrorString="@string/invalid_email"
+            app:testErrorString="@string/invalid_email"
+            app:testType="personFullName" />
+
+
+        <TextView
+            style="@style/BeepLabel"
+            android:id="@+id/login_email_label"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/email" />
+
+        <com.andreabaccega.widget.FormEditText
+            android:hint="@string/email"
+            android:id="@+id/login_email_edit"
+            android:inputType="textEmailAddress"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:singleLine="true"
+            app:emptyErrorString="@string/invalid_email"
+            app:testErrorString="@string/invalid_email"
+            app:testType="email" />
+
+        <TextView
+            style="@style/BeepLabel"
+            android:id="@+id/login_policy_label"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/policy" />
+
+        <com.andreabaccega.widget.FormEditText
+            android:hint="@string/policy"
+            android:id="@+id/login_policy_edit"
+            android:inputType="text"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:singleLine="true"
+            app:emptyErrorString="@string/invalid_policy"
+            app:testErrorString="@string/invalid_policy"
+            app:testType="alphaNumeric" />
+
+        <TextView
+            style="@style/BeepLabel"
+            android:id="@+id/login_mobile_label"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/mobile" />
+
+        <com.andreabaccega.widget.FormEditText
+            android:hint="@string/mobile"
+            android:id="@+id/login_mobile_edit"
+            android:inputType="number"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:singleLine="true"
+            app:emptyErrorString="@string/invalid_mobile"
+            app:testErrorString="@string/invalid_mobile"
+            app:testType="phone" />
+
+
+        <TextView
+            style="@style/ErrorLabel"
+            android:id="@+id/login_error_label"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:visibility="gone"
+            android:text="@string/invalid_credentials" />
+
+        <TextView
+            style="@style/ErrorLabel"
+            android:id="@+id/login_error_already_used_label"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:visibility="gone"
+            android:text="@string/already_used_credentials" />
+
+    </LinearLayout>
+</LinearLayout>
