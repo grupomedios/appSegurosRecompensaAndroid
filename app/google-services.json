@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "758599044865",
+    "project_id": "segurosrecompensa"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:758599044865:android:8f585846649fa75d",
+        "android_client_info": {
+          "package_name": "com.grupomedios.dclub.segurosrecompensa"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCyrTMjuAJ_TsnFnXIWLog5LQptJKGIOnE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-82172975-2"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

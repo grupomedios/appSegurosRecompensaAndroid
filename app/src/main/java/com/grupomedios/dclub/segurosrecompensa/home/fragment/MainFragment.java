@@ -16,6 +16,7 @@ import android.widget.GridView;
 import com.grupomedios.dclub.segurosrecompensa.DesclubApplication;
 import com.grupomedios.dclub.segurosrecompensa.R;
 import com.grupomedios.dclub.segurosrecompensa.discounts.activity.DiscountListActivity;
+import com.grupomedios.dclub.segurosrecompensa.fragment.BaseFragment;
 import com.grupomedios.dclub.segurosrecompensa.home.adapter.CategoryAdapter;
 import com.grupomedios.dclub.segurosrecompensa.home.util.FakeCategoryUtil;
 import com.grupomedios.desclub.desclubapi.representations.FakeCategoryRepresentation;
@@ -28,7 +29,7 @@ import java.util.List;
 /**
  * Main {@link Fragment} subclass.
  */
-public class MainFragment extends Fragment {
+public class MainFragment extends BaseFragment {
 
     public static final String LIST_HOTEL_OPTION = "com.beepquest.beepquestandroid.home.fragment.MainFragment";
     private final String TAG = "MainFragment";
@@ -47,6 +48,8 @@ public class MainFragment extends Fragment {
             FakeCategoryRepresentation fakeCategoryRepresentation = categories.get(position);
             //if not red medica => show category listing
             if (!fakeCategoryRepresentation.get_id().equals("1")) {
+                trackEvent(getString(R.string.analytics_category_category), getString(R.string.analytics_event_category_prefix) + fakeCategoryRepresentation.getName());
+
                 Intent intent = new Intent(getActivity(), DiscountListActivity.class);
                 intent.putExtra(DiscountListActivity.CURRENT_CATEGORY_PARAM, fakeCategoryRepresentation);
                 startActivity(intent);
@@ -122,6 +125,11 @@ public class MainFragment extends Fragment {
         //list.add(new FakeCategoryRepresentation("1", getResources().getString(R.string.red_medica), R.drawable.red_medica, R.color.desclub_blue));
 
         return list;
+    }
+
+    @Override
+    public String getScreenName() {
+        return null;
     }
 
 }

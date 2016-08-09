@@ -34,4 +34,9 @@ public class DiscountListActivity extends DesclubGeneralActivity {
         return R.layout.activity_discount_list;
     }
 
+    @Override
+    public String getScreenName() {
+        return getString(R.string.analytics_screen_discounts_list);
+    }
+
 }

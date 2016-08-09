@@ -88,6 +88,41 @@ public class DesclubMainActivity extends DesclubGeneralActivity {
         };
         viewPagerTab.setCustomTabView(customTabProvider);
         viewPagerTab.setViewPager(viewPager);
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                switch (position) {
+                    //mapa
+                    case 1:
+                        trackScreen(getString(R.string.analytics_screen_map_tab));
+                        break;
+                    //recomendados
+                    case 2:
+                        trackScreen(getString(R.string.analytics_screen_recommended));
+                        break;
+                    //card
+                    case 3:
+                        trackScreen(getString(R.string.analytics_screen_card));
+                        break;
+                    //home
+                    default:
+                        trackScreen(getString(R.string.analytics_screen_home));
+                        break;
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+        // For first time
+        trackScreen(getString(R.string.analytics_screen_home));
 
         //try to show the initial dialog if conditions are met
         userHelper.showInitialDialog(this, requestQueue, corporateMembershipFacade);
@@ -97,4 +132,10 @@ public class DesclubMainActivity extends DesclubGeneralActivity {
     protected int getLayoutResource() {
         return R.layout.activity_main;
     }
+
+    @Override
+    public String getScreenName() {
+        return null;
+    }
+
 }

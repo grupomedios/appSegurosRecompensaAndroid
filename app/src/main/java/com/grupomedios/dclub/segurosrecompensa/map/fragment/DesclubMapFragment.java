@@ -26,6 +26,7 @@ import com.grupomedios.dclub.segurosrecompensa.DesclubApplication;
 import com.grupomedios.dclub.segurosrecompensa.R;
 import com.grupomedios.dclub.segurosrecompensa.VolleySingleton;
 import com.grupomedios.dclub.segurosrecompensa.discounts.activity.DiscountActivity;
+import com.grupomedios.dclub.segurosrecompensa.fragment.BaseFragment;
 import com.grupomedios.dclub.segurosrecompensa.home.util.FakeCategoryUtil;
 import com.grupomedios.desclub.desclubapi.facade.DiscountFacade;
 import com.grupomedios.desclub.desclubapi.representations.FakeCategoryRepresentation;
@@ -49,7 +50,7 @@ import javax.inject.Inject;
 /**
  * Main {@link Fragment} subclass.
  */
-public class DesclubMapFragment extends Fragment implements OnMapReadyCallback {
+public class DesclubMapFragment extends BaseFragment implements OnMapReadyCallback {
 
     private final String TAG = "DesclubMapFragment";
     private GPSService gpsService;
@@ -245,6 +246,12 @@ public class DesclubMapFragment extends Fragment implements OnMapReadyCallback {
         }, new SilentErrorListener(TAG, getActivity(), progressDialog), params);
 
         requestQueue.add(guestAndLoginRequest);
+    }
+
+
+    @Override
+    public String getScreenName() {
+        return null;
     }
 
 }

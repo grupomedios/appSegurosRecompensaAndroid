@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/SegurosRecompensa.iml" filepath="$PROJECT_DIR$/SegurosRecompensa.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/vCorp_Bancomer_Android-master.iml" filepath="$PROJECT_DIR$/vCorp_Bancomer_Android-master.iml" />
     </modules>
   </component>
 </project>

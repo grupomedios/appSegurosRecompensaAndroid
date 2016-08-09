@@ -1,7 +1,6 @@
 package com.grupomedios.dclub.segurosrecompensa.discounts.fragment;
 
 import android.annotation.TargetApi;
-import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.GradientDrawable;
@@ -33,6 +32,7 @@ import com.grupomedios.dclub.segurosrecompensa.VolleySingleton;
 import com.grupomedios.dclub.segurosrecompensa.activity.BaseActivity;
 import com.grupomedios.dclub.segurosrecompensa.discounts.activity.DiscountActivity;
 import com.grupomedios.dclub.segurosrecompensa.discounts.adapter.DiscountAdapter;
+import com.grupomedios.dclub.segurosrecompensa.fragment.BaseFragment;
 import com.grupomedios.desclub.desclubapi.facade.CategoryFacade;
 import com.grupomedios.desclub.desclubapi.facade.DiscountFacade;
 import com.grupomedios.desclub.desclubapi.facade.StateFacade;
@@ -67,7 +67,7 @@ import javax.inject.Inject;
 /**
  * Created by jhoncruz on 28/05/15.
  */
-public class DiscountListFragment extends Fragment implements PaginableActivity {
+public class DiscountListFragment extends BaseFragment implements PaginableActivity {
 
     private final String TAG = "DiscountListFragment";
 
@@ -588,4 +588,10 @@ public class DiscountListFragment extends Fragment implements PaginableActivity 
 
         requestQueue.add(guestAndLoginRequest);
     }
+
+    @Override
+    public String getScreenName() {
+        return null;
+    }
+
 }

@@ -67,6 +67,8 @@ public class DiscountActivity extends DesclubGeneralActivity {
 
         gpsService = new GPSService(this);
         gpsService.getLocation();
+        trackEvent(getString(R.string.analytics_category_discount), getString(R.string.analytics_event_discount_prefix) + discount.getBranch().getName());
+
     }
 
     @Override
@@ -185,6 +187,7 @@ public class DiscountActivity extends DesclubGeneralActivity {
         TextView couponLabel = (TextView) findViewById(R.id.viewDiscount_coupon_label);
 
         if (viewDiscountLayout.getVisibility() == View.GONE) {
+            trackEvent(getString(R.string.analytics_category_coupon), getString(R.string.analytics_event_coupon_prefix) + discount.getBranch().getName());
 
             //force landscape
             this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
@@ -312,4 +315,10 @@ public class DiscountActivity extends DesclubGeneralActivity {
     protected int getLayoutResource() {
         return R.layout.activity_discount;
     }
+
+    @Override
+    public String getScreenName() {
+        return getString(R.string.analytics_screen_discount);
+    }
+
 }

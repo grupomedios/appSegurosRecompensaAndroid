@@ -20,6 +20,7 @@ import com.grupomedios.dclub.segurosrecompensa.DesclubApplication;
 import com.grupomedios.dclub.segurosrecompensa.R;
 import com.grupomedios.dclub.segurosrecompensa.VolleySingleton;
 import com.grupomedios.dclub.segurosrecompensa.discounts.activity.DiscountActivity;
+import com.grupomedios.dclub.segurosrecompensa.fragment.BaseFragment;
 import com.grupomedios.dclub.segurosrecompensa.recommended.adapter.RecommendedDiscountAdapter;
 import com.grupomedios.desclub.desclubapi.facade.DiscountFacade;
 import com.grupomedios.desclub.desclubapi.representations.DiscountRepresentation;
@@ -45,7 +46,7 @@ import javax.inject.Inject;
 /**
  * Main {@link Fragment} subclass.
  */
-public class RecommendedFragment extends Fragment implements PaginableActivity {
+public class RecommendedFragment extends BaseFragment implements PaginableActivity {
 
     private final String TAG = "RecommendedFragment";
 
@@ -191,4 +192,10 @@ public class RecommendedFragment extends Fragment implements PaginableActivity {
 
         requestQueue.add(allRecommendedDiscounts);
     }
+
+    @Override
+    public String getScreenName() {
+        return null;
+    }
+
 }

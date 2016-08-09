@@ -24,7 +24,7 @@ import javax.inject.Inject;
 /**
  * Main {@link Fragment} subclass.
  */
-public class CardFragment extends Fragment {
+public class CardFragment extends BaseFragment {
 
     private final String TAG = "CardFragment";
 
@@ -119,4 +119,10 @@ public class CardFragment extends Fragment {
             });
         }
     }
+
+    @Override
+    public String getScreenName() {
+        return null;
+    }
+
 }
