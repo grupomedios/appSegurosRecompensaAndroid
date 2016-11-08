@@ -3,9 +3,11 @@ package com.grupomedios.dclub.segurosrecompensa.discounts.activity;
 import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.drawable.GradientDrawable;
 import android.location.Location;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -56,9 +58,17 @@ public class DiscountActivity extends DesclubGeneralActivity {
     @Inject
     UserHelper userHelper;
 
+    private TextView mCardTextView;
+    private TextView mCashTextView;
+    private TextView mPhoneTextView;
+    private View mPhoneContainer;
+    private View mCardCashDiscountsContainer;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        initUi();
 
         this.discount = (DiscountRepresentation) getIntent().getSerializableExtra(CURRENT_DISCOUNT_PARAM);
         this.category = (FakeCategoryRepresentation) getIntent().getSerializableExtra(CURRENT_CATEGORY_PARAM);
@@ -69,6 +79,14 @@ public class DiscountActivity extends DesclubGeneralActivity {
         gpsService.getLocation();
         trackEvent(getString(R.string.analytics_category_discount), getString(R.string.analytics_event_discount_prefix) + discount.getBranch().getName());
 
+    }
+
+    private void initUi() {
+        mCashTextView = (TextView) findViewById(R.id.viewDiscount_cash_textView);
+        mCardTextView = (TextView) findViewById(R.id.viewDiscount_card_textView);
+        mPhoneTextView = (TextView) findViewById(R.id.viewDiscount_branch_phone_textView);
+        mPhoneContainer = findViewById(R.id.viewDiscount_branch_phone_container);
+        mCardCashDiscountsContainer = findViewById(R.id.viewDiscount_card_cash_layout);
     }
 
     @Override
@@ -96,37 +114,55 @@ public class DiscountActivity extends DesclubGeneralActivity {
     }
 
     private void setDiscountData() {
+        boolean showCard = false;
+        boolean showCash = false;
 
-        boolean showPromo = false;
-        if (discount.getCash() != null && discount.getCash().length() > 0) {
-            TextView cashTextView = (TextView) findViewById(R.id.viewDiscount_cash_textView);
-            cashTextView.setTextColor(getResources().getColor(category.getColor()));
-            cashTextView.setText(discount.getCash() + "%");
+        mCashTextView.setTextColor(getResources().getColor(category.getColor()));
+        if (discount.isCashValueValid()) {
+            mCashTextView.setText(discount.getCash() + "%");
+            showCash = true;
         } else {
-            showPromo = true;
+            showCash = false;
         }
 
-        if (discount.getCard() != null && discount.getCard().length() > 0) {
-            TextView cardTextView = (TextView) findViewById(R.id.viewDiscount_card_textView);
-            cardTextView.setTextColor(getResources().getColor(category.getColor()));
-            cardTextView.setText(discount.getCard() + "%");
-            showPromo = false;
+        mCardTextView.setTextColor(getResources().getColor(category.getColor()));
+        if (discount.isCardValueValid()) {
+            mCardTextView.setText(discount.getCard() + "%");
+            showCard = true;
         } else {
-            showPromo = true;
+            showCard = false;
         }
 
-        if (showPromo) {
-            LinearLayout cashCardLayout = (LinearLayout) findViewById(R.id.viewDiscount_card_cash_layout);
-            cashCardLayout.setVisibility(View.GONE);
+        if (showCard && !showCash) {
+            mCashTextView.setText("0%");
+            mCardTextView.setVisibility(View.VISIBLE);
+            mCashTextView.setVisibility(View.VISIBLE);
+        }
 
-            RelativeLayout promoLayout = (RelativeLayout) findViewById(R.id.viewDiscount_promo_layout);
-            promoLayout.setVisibility(View.VISIBLE);
+        if (!showCard && showCash) {
+            mCardTextView.setText("0%");
+            mCardTextView.setVisibility(View.VISIBLE);
+            mCashTextView.setVisibility(View.VISIBLE);
+        }
 
-            TextView promoTextView = (TextView) findViewById(R.id.viewDiscount_promo_textView);
+        if (!showCard && !showCash) {
+            mCardCashDiscountsContainer.setVisibility(View.GONE);
+        } else
+            mCardCashDiscountsContainer.setVisibility(View.VISIBLE);
+
+        // Show promo
+        RelativeLayout promoLayout = (RelativeLayout) findViewById(R.id.viewDiscount_promo_layout);
+        promoLayout.setVisibility(View.VISIBLE);
+
+        TextView promoTextView = (TextView) findViewById(R.id.viewDiscount_promo_textView);
+
+        if (discount.getPromo() != null && !discount.getPromo().isEmpty()) {
             promoTextView.setTextColor(getResources().getColor(category.getColor()));
             promoTextView.setText(discount.getPromo());
+            promoTextView.setVisibility(View.VISIBLE);
+        } else
+            promoTextView.setVisibility(View.GONE);
 
-        }
         //logo
         ImageView logoImage = (ImageView) findViewById(R.id.viewDiscount_business_logo_imageView);
         ImageUtil.displayImage(logoImage, discount.getBrand().getLogoSmall(), null);
@@ -149,6 +185,17 @@ public class DiscountActivity extends DesclubGeneralActivity {
             TextView distance = (TextView) findViewById(R.id.viewDiscount_distance_textView);
             distance.setText(DiscountAdapter.calculateDistance(new Double(distanceInKm)));
         }
+
+        // phone
+        if (discount.getBranch().getPhone() != null && !discount.getBranch().getPhone().isEmpty()) {
+            mPhoneTextView.setText(discount.getBranch().getPhone());
+            mPhoneContainer.setVisibility(View.VISIBLE);
+            mPhoneTextView.setOnClickListener(mOnClickOnCall);
+        } else {
+            mPhoneContainer.setVisibility(View.GONE);
+            mPhoneTextView.setOnClickListener(null);
+        }
+
 
         //address
         TextView addressName = (TextView) findViewById(R.id.viewDiscount_branch_address_textView);
@@ -321,4 +368,17 @@ public class DiscountActivity extends DesclubGeneralActivity {
         return getString(R.string.analytics_screen_discount);
     }
 
+
+    private View.OnClickListener mOnClickOnCall = new View.OnClickListener() {
+
+        @Override
+        public void onClick(View v) {
+            try {
+                Intent intent = new Intent(Intent.ACTION_CALL, Uri.fromParts("tel", discount.getBranch().getPhone(), null));
+                startActivity(intent);
+            } catch (Exception e) {
+
+            }
+        }
+    };
 }

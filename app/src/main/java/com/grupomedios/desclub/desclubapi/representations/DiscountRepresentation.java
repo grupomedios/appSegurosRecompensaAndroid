@@ -104,4 +104,22 @@ public class DiscountRepresentation implements Serializable {
     public void setLocation(LocationRepresentation location) {
         this.location = location;
     }
+
+
+    public boolean isCashValueValid() {
+        try {
+            return cash != null && !cash.isEmpty() && Float.parseFloat(cash) > 0f;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public boolean isCardValueValid() {
+        try {
+            return card != null && !card.isEmpty() && Float.parseFloat(card) > 0f;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
 }

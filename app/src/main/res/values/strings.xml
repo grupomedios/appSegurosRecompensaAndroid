@@ -111,5 +111,7 @@
     <string name="analytics.event.category_prefix">"Categoria - "</string>
     <string name="analytics.category.coupon">Usar cupon</string>
     <string name="analytics.event.coupon_prefix">"Cupon - "</string>
+    <string name="discount.phone.format">"Teléfono: "</string>
+
 
 </resources>
