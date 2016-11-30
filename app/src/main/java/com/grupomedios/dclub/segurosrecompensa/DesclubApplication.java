@@ -8,6 +8,7 @@ import com.google.android.gms.analytics.Tracker;
 import com.grupomedios.desclub.desclubutil.MCXApplication;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.onesignal.OneSignal;
 
 import java.util.List;
 
@@ -46,7 +47,7 @@ public class DesclubApplication extends MCXApplication {
 
         ImageLoader.getInstance()
                 .init(ImageLoaderConfiguration.createDefault(this));
-
+        initOneSignal();
     }
 
     @Override
@@ -65,4 +66,9 @@ public class DesclubApplication extends MCXApplication {
         }
         return mTracker;
     }
+
+    private void initOneSignal(){
+        OneSignal.startInit(this).init();
+    }
+
 }

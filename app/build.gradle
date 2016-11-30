@@ -46,6 +46,10 @@ android {
         targetSdkVersion 22
         versionCode 13
         versionName "1.2.3"
+        manifestPlaceholders = [
+                onesignal_app_id: "5a9c9a95-a26f-494f-a9ee-79523842caa4",
+                onesignal_google_project_number: "758599044865"]
+
         // Enabling multidex support.
         //multiDexEnabled true
     }
@@ -121,7 +125,8 @@ dependencies {
     compile 'com.google.android.gms:play-services-base:8.3.0'
     compile 'com.google.android.gms:play-services-gcm:8.3.0'
     compile 'com.google.android.gms:play-services-analytics:8.3.0'
-
+    compile 'com.google.android.gms:play-services-location:8.3.0'
+    compile 'com.onesignal:OneSignal:3.+@aar'
 
     //DI
     compile 'com.squareup.dagger:dagger-compiler:1.2.2'
