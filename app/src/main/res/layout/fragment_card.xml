@@ -45,7 +45,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal|bottom"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="15dp"
             android:layout_marginTop="5dp"
             android:textColor="@color/desclub_blue"
             android:background="@color/material_grey_100"

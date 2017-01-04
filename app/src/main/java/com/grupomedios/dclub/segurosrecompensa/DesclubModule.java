@@ -1,15 +1,16 @@
 package com.grupomedios.dclub.segurosrecompensa;
 
-import com.grupomedios.dclub.segurosrecompensa.fragment.CardFragment;
 import com.grupomedios.dclub.segurosrecompensa.activity.BaseActivity;
 import com.grupomedios.dclub.segurosrecompensa.activity.DesclubGeneralActivity;
 import com.grupomedios.dclub.segurosrecompensa.discounts.activity.DiscountActivity;
 import com.grupomedios.dclub.segurosrecompensa.discounts.activity.DiscountListActivity;
 import com.grupomedios.dclub.segurosrecompensa.discounts.fragment.DiscountListFragment;
+import com.grupomedios.dclub.segurosrecompensa.fragment.CardFragment;
 import com.grupomedios.dclub.segurosrecompensa.home.activity.DesclubMainActivity;
 import com.grupomedios.dclub.segurosrecompensa.home.activity.SplashActivity;
 import com.grupomedios.dclub.segurosrecompensa.home.fragment.MainFragment;
 import com.grupomedios.dclub.segurosrecompensa.map.fragment.DesclubMapFragment;
+import com.grupomedios.dclub.segurosrecompensa.notifications.fragment.NotificationsFragment;
 import com.grupomedios.dclub.segurosrecompensa.recommended.fragment.RecommendedFragment;
 import com.grupomedios.desclub.desclubutil.MCXModule;
 
@@ -32,7 +33,8 @@ import dagger.Module;
                 DesclubMapFragment.class,
                 RecommendedFragment.class,
                 CardFragment.class,
-                DiscountListFragment.class
+                DiscountListFragment.class,
+                NotificationsFragment.class
 
         },
         includes = {

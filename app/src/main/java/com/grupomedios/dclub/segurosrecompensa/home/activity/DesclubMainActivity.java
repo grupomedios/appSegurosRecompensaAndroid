@@ -10,10 +10,11 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.grupomedios.dclub.segurosrecompensa.R;
-import com.grupomedios.dclub.segurosrecompensa.fragment.CardFragment;
 import com.grupomedios.dclub.segurosrecompensa.activity.DesclubGeneralActivity;
+import com.grupomedios.dclub.segurosrecompensa.fragment.CardFragment;
 import com.grupomedios.dclub.segurosrecompensa.home.fragment.MainFragment;
 import com.grupomedios.dclub.segurosrecompensa.map.fragment.DesclubMapFragment;
+import com.grupomedios.dclub.segurosrecompensa.notifications.fragment.NotificationsFragment;
 import com.grupomedios.dclub.segurosrecompensa.recommended.fragment.RecommendedFragment;
 import com.grupomedios.desclub.desclubapi.facade.CorporateMembershipFacade;
 import com.grupomedios.desclub.desclubutil.security.UserHelper;
@@ -49,9 +50,11 @@ public class DesclubMainActivity extends DesclubGeneralActivity {
                 getFragmentManager(), FragmentPagerItems.with(this)
                 .add(R.string.home, MainFragment.class)
                 .add(R.string.map, DesclubMapFragment.class)
-                .add(R.string.recommended, RecommendedFragment.class)
+                .add(R.string.notifications, NotificationsFragment.class)
                 .add(R.string.card, CardFragment.class)
                 .create());
+
+//        .add(R.string.recommended, RecommendedFragment.class)
 
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
         viewPager.setAdapter(adapter);

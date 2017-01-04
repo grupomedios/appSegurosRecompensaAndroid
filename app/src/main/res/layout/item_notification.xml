@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/marker_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="MissingPrefix"
+    android:orientation="vertical"
+    tools:background="@color/White">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/margin_normal"
+        android:paddingTop="@dimen/margin_small"
+        android:paddingRight="@dimen/margin_normal"
+        android:paddingLeft="@dimen/margin_normal">
+
+        <TextView
+            android:id="@+id/item_notification_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:textColor="@color/Gray"
+            android:textSize="@dimen/text_size_small"
+            tools:text="22/12/2012" />
+
+        <TextView
+            android:id="@+id/item_notification_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:textSize="@dimen/text_size_normal"
+            android:textColor="@color/Black"
+            tools:text="Titulo de la notificacion"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/item_notification_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:textSize="@dimen/text_size_normal"
+            android:textColor="@color/Black"
+            tools:text="Contenido de la notificación. Contenido de la notificación. Contenido de la notificación.Contenido de la notificación"
+            />
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/LightGrey"/>
+</LinearLayout>

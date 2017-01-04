@@ -105,6 +105,7 @@
     <string name="analytics.screen.home">Inicio</string>
     <string name="analytics.screen.recommended">Recomendados</string>
     <string name="analytics.screen.map_tab">Mapa de Descuentos</string>
+    <string name="analytics.screen.notifications">Notificaciones</string>
     <string name="analytics.category.discount">Descuento</string>
     <string name="analytics.event.discount_prefix">"Descuento - "</string>
     <string name="analytics.category.category">Categoria</string>
@@ -113,5 +114,9 @@
     <string name="analytics.event.coupon_prefix">"Cupon - "</string>
     <string name="discount.phone.format">"Teléfono: "</string>
 
+    <string name="onesignal_app_id">5a9c9a95-a26f-494f-a9ee-79523842caa4</string>
+    <string name="onesignal_rest_api_key">OTBlY2E4NzYtYjEyZS00MTZiLWI5M2UtZmQyZmY1ZTMxNzk0</string>
+    <string name="notifications.empty">Aún no hay notificaciones para mostrar...</string>
+    <string name="notifications">Notificaciones</string>
 
 </resources>
